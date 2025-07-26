@@ -71,14 +71,14 @@ const Revenuechart = () => {
 		},
 	];
 	return (
-		<div className='revenuechart md:flex-1 bg-[#1F1F1F] md:my-0 my-2 rounded-sm'>
+		<div className='revenuechart md:flex-1 dark:bg-[#1F1F1F] bg-[#fff] shadow-sm md:my-0 my-2 rounded-sm'>
 			<div className='title flex w-full justify-between items-center p-6'>
-				<h3 className='text-2xl font-semibold text-[#51CEDF]'>
+				<h3 className='text-xl text-[var(--header-light-color)] dark:text-[var(--primary-color)]  font-bold'>
 					Weekly Revenue Flow
 				</h3>
 				<select
 					name='date'
-					className='bg-[#262626] outline-0 text-white py-2 px-4 rounded-md font-medium'
+					className='dark:bg-[#262626] bg-white outline-0 dark:text-white text-black py-2 px-4 rounded-md font-medium shadow-sm'
 					id='date'>
 					<option value='2025'>2025</option>
 					<option value='2024'>2024</option>

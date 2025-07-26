@@ -24,19 +24,24 @@ export default function App() {
 						<Navbar />
 					</div>
 					<div className='mainbody  p-4  h-full '>
-						<section className='title flex items-center justify-between mb-4 px-4 mt-[100px]'>
+						<section className='title flex md:flex-row flex-col md:items-center justify-between mb-4 px-4 mt-[100px]'>
 							<div className='left'>
 								<h3 className='text-2xl font-bold text-[var(--header-light-color)] dark:text-[var(--primary-color)]'>
 									Overview
 								</h3>
-								<p className='text-lg text-[#383838] dark:text-[var(--text-color)]'>
+								<p className='md:text-lg text-[#383838] dark:text-[var(--text-color)] w-full'>
 									Stay updated on the general information about our rides
 								</p>
 							</div>
 							<div className='right'>
-								<h4 className='flex items-center gap-2 text-lg font-medium text-[var(--header-light-color)] dark:text-[var(--primary-color)] cursor-pointer hover:text-[#333333] transition-all duration-150 ease-in-out'>
-									Download Report <FaCloudDownloadAlt size={24} />
+								<h4 className=' items-center gap-2 text-lg font-medium text-[var(--header-light-color)] dark:text-[var(--primary-color)] cursor-pointer hover:text-[#333333] transition-all duration-150 ease-in-out md:flex hidden'>
+									<span>Download Report </span>
+									<FaCloudDownloadAlt size={24} />
 								</h4>
+								<button className='w-full bg-[var(--header-light-color)] dark:text-white text-white font-medium flex items-center justify-center gap-2 px-4 py-4 mt-4 rounded-lg md:hidden'>
+									<span>Download Report </span>
+									<FaCloudDownloadAlt size={24} />
+								</button>
 							</div>
 						</section>
 						<FleetMetrics />

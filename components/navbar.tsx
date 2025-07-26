@@ -11,16 +11,25 @@ const Navbar = () => {
 		setMounted(true);
 	}, []);
 	return (
-		<div className='flex justify-between items-center p-4 bg-[#fbfbfb] dark:bg-[#1F1F1F] text-white dark:text-white shadow-md h-full px-8'>
-			<div className='mobileMenu px-8 md:hidden flex items-center justify-between w-full'>
-				<img
-					src='@/../assets/logo.svg'
-					alt='Logo'
-					className='w-40 h-40'
-				/>
+		<div className='flex justify-between items-center py-4 bg-[#fbfbfb] dark:bg-[#1F1F1F] text-white dark:text-white shadow-md h-full px-8 w-full'>
+			<div className='mobileMenu px-2 md:hidden flex items-center justify-between w-full'>
+				{theme === 'dark' ? (
+					<img
+						src='@/../assets/logo.svg'
+						alt='Logo'
+						className='w-24 h-24'
+					/>
+				) : (
+					<img
+						src='@/../assets/logo-dark.svg'
+						alt='Logo'
+						className='w-24 h-24'
+					/>
+				)}
+
 				<FiMenu
 					size={32}
-					className='text-[var(--header-light-color)] dark:text-[var(--primary-color)] cursor-pointer'
+					className='dark:text-[var(--header-light-color)] text-[var(--header-light-color)] cursor-pointer'
 				/>
 			</div>
 			<div className='md:block hidden search w-1/2 '>

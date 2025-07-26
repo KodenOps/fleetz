@@ -30,8 +30,8 @@ const DriverOfTheMonth = () => {
 	];
 	return (
 		<div className='w-full'>
-			<div className='w-full p-4 mt-2  bg-[#1F1F1F] rounded-lg'>
-				<h4 className='text-xl w-1/2 text-[#51CEDF] font-semibold'>
+			<div className='w-full p-4 mt-2  dark:bg-[#1F1F1F] bg-[#fff] shadow-sm rounded-lg'>
+				<h4 className='text-xl w-1/2 text-[var(--header-light-color)] dark:text-[var(--primary-color)]  font-bold'>
 					Driver of the month
 				</h4>
 				<div className='md:grid grid-cols-3  gap-2 mt-4'>
