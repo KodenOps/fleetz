@@ -3,33 +3,30 @@ import { Input } from '@heroui/input';
 import { FiSearch, FiSun, FiMoon, FiMenu } from 'react-icons/fi';
 import { IoMdNotificationsOutline, IoIosArrowDown } from 'react-icons/io';
 import { useTheme } from 'next-themes';
-
+import logo from '@/public/assets/logo.svg';
+import logodark from '@/public/assets/logo-dark.svg';
+import Image from 'next/image';
 const Navbar = () => {
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => {
 		setMounted(true);
-	}, []);
+	}, [theme]);
 	return (
 		<div className='flex justify-between items-center py-4 bg-[#fbfbfb] dark:bg-[#1F1F1F] text-white dark:text-white shadow-md h-full px-4 w-full '>
 			<div className='mobileMenu px-2 md:hidden flex items-center justify-between w-full'>
-				{theme === 'dark' ? (
-					<img
-						src='@/../assets/logo.svg'
+				{mounted && (
+					<Image
+						src={theme === 'light' ? logodark : logo}
 						alt='Logo'
-						className='w-24 h-24'
-					/>
-				) : (
-					<img
-						src='@/../assets/logo-dark.svg'
-						alt='Logo'
-						className='w-24 h-24'
+						className='w-[40%]'
+						priority
 					/>
 				)}
 
 				<FiMenu
 					size={32}
-					className='dark:text-[var(--header-light-color)] text-[var(--header-light-color)] cursor-pointer'
+					className='dark:text-[var(--primary-color)] text-[var(--header-light-color)] cursor-pointer'
 				/>
 			</div>
 			<div className='md:block hidden search w-1/2 '>
@@ -55,19 +52,20 @@ const Navbar = () => {
 					/>
 					<div>
 						{/* Theme switcher */}
-						{mounted && theme === 'light' ? (
-							<FiMoon
-								size={24}
-								onClick={() => setTheme('dark')}
-								className='cursor-pointer text-[var(--header-light-color)] dark:text-[var(--primary-color)]'
-							/>
-						) : (
-							<FiSun
-								size={24}
-								onClick={() => setTheme('light')}
-								className='cursor-pointer text-orange-400'
-							/>
-						)}
+						{mounted &&
+							(theme === 'light' ? (
+								<FiMoon
+									size={24}
+									onClick={() => setTheme('dark')}
+									className='cursor-pointer text-[var(--header-light-color)] dark:text-[var(--primary-color)]'
+								/>
+							) : (
+								<FiSun
+									size={24}
+									onClick={() => setTheme('light')}
+									className='cursor-pointer text-orange-400'
+								/>
+							))}
 					</div>
 				</div>
 				<div className='flex items-center gap-4 cursor-pointer hover:bg-[#51CEDF] hover:text-[#333333] p-2 rounded-lg transition-all duration-150 ease-in-out'>

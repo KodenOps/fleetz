@@ -1,5 +1,6 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { BiBarChartSquare } from 'react-icons/bi';
 import { PiCarSimpleThin, PiTicketThin, PiUserListBold } from 'react-icons/pi';
 import { RiMic2AiLine } from 'react-icons/ri';
@@ -12,32 +13,17 @@ interface SidenavLink {
 	title: string;
 	id: string;
 }
+
 const sidenavLinks: SidenavLink[] = [
-	{
-		icon: BiBarChartSquare,
-		title: 'Dashboard',
-		id: 'dashboard',
-	},
+	{ icon: BiBarChartSquare, title: 'Dashboard', id: 'dashboard' },
 	{
 		icon: PiCarSimpleThin,
 		title: 'Vehicles Management',
 		id: 'Vehicles Management',
 	},
-	{
-		icon: PiTicketThin,
-		title: 'Bookings',
-		id: 'Bookings',
-	},
-	{
-		icon: PiUserListBold,
-		title: 'Complaints',
-		id: 'Complaints',
-	},
-	{
-		icon: RiMic2AiLine,
-		title: 'Broadcast',
-		id: 'Broadcast',
-	},
+	{ icon: PiTicketThin, title: 'Bookings', id: 'Bookings' },
+	{ icon: PiUserListBold, title: 'Complaints', id: 'Complaints' },
+	{ icon: RiMic2AiLine, title: 'Broadcast', id: 'Broadcast' },
 	{
 		icon: FaWpforms,
 		title: 'Onboarding & Offboarding',
@@ -48,34 +34,36 @@ const sidenavLinks: SidenavLink[] = [
 		title: 'Settings & Configurations',
 		id: 'Settings & Configurations',
 	},
-	{
-		icon: TbLogout2,
-		title: 'Logout',
-		id: 'Logout',
-	},
+	{ icon: TbLogout2, title: 'Logout', id: 'Logout' },
 ];
+
 const Sidenav = () => {
-	const { theme, setTheme } = useTheme();
+	const { theme } = useTheme();
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
 	return (
-		<div className='left w-[360px] hidden md:block fixed left-0 dark:bg-[#1F1F1F] bg-white h-screen py-8 px-4 '>
+		<div className='left w-[360px] hidden md:block fixed left-0 dark:bg-[#1F1F1F] bg-white h-screen py-8 px-4'>
 			<div className='logo'>
-				{theme === 'dark' ? (
-					<img
-						src='@/../assets/logo.svg'
+				{mounted ? (
+					<Image
+						src={
+							theme === 'light' ? '/assets/logo-dark.svg' : '/assets/logo.svg'
+						}
 						alt='Logo'
+						width={160}
+						height={50}
 						className='p-2'
+						priority
 					/>
-				) : (
-					<img
-						src='@/../assets/logo-dark.svg'
-						alt='Logo'
-						className='p-2'
-					/>
-				)}
+				) : null}
 			</div>
-			<div className='overflow-y-auto max-h-[90vh] scrollbar-hide  mt-6'>
-				<div className='links py-4 px-2 dark:bg-[#262626] bg-[#fff] shadow-lg dark:border-0 border-1 border-[#e8e8e8] rounded-sm w-full'>
+
+			<div className='overflow-y-auto max-h-[90vh] scrollbar-hide mt-6'>
+				<div className='links py-4 px-2 dark:bg-[#262626] bg-[#fff] shadow-lg dark:border-0 border border-[#e8e8e8] rounded-sm w-full'>
 					<ul>
 						{sidenavLinks.map((link) => (
 							<li
@@ -87,11 +75,14 @@ const Sidenav = () => {
 						))}
 					</ul>
 				</div>
+
 				<div className='logo w-full mt-2'>
-					<img
-						src='@/../assets/cta.png'
-						alt='User Profile'
-						className=' w-full'
+					<Image
+						src='/assets/cta.png'
+						alt='Call to Action'
+						width={360}
+						height={160}
+						className='w-full'
 					/>
 				</div>
 			</div>
