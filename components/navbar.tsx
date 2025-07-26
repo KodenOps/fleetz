@@ -3,21 +3,21 @@ import { Input } from '@heroui/input';
 import { FiSearch, FiSun, FiMoon, FiMenu } from 'react-icons/fi';
 import { IoMdNotificationsOutline, IoIosArrowDown } from 'react-icons/io';
 import { useTheme } from 'next-themes';
-import logo from '@/public/assets/logo.svg';
-import logodark from '@/public/assets/logo-dark.svg';
+import logodark from '@/public/assets/logo.svg';
+import logo from '@/public/assets/logo-dark.svg';
 import Image from 'next/image';
 const Navbar = () => {
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => {
 		setMounted(true);
-	}, [theme]);
+	}, []);
 	return (
 		<div className='flex justify-between items-center py-4 bg-[#fbfbfb] dark:bg-[#1F1F1F] text-white dark:text-white shadow-md h-full px-4 w-full '>
 			<div className='mobileMenu px-2 md:hidden flex items-center justify-between w-full'>
 				{mounted && (
 					<Image
-						src={theme === 'light' ? logodark : logo}
+						src={theme === 'light' ? logo : logodark}
 						alt='Logo'
 						className='w-[40%]'
 						priority
