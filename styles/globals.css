@@ -2,6 +2,17 @@
 
 @config "../tailwind.config.js";
 
+:root {
+	--primary-color: #51cedf;
+	--secondary-color: #262626;
+	--text-color: #ffffff;
+	--background-color: #1a1a1a;
+	--header-dark-color: #51cedf;
+	--header-light-color: #054c56;
+	--subtext-light: #494949;
+	--subtext-dark: #a0a0a0;
+}
+
 /* Custom scrollbar for sidenav with auto-hide (width trick) */
 .sidenav-scrollbar {
 	scrollbar-width: thin;
@@ -26,10 +37,10 @@
 
 /* Hide element below 900px */
 .hide-below-900 {
-  display: block;
+	display: block;
 }
 @media (max-width: 899px) {
-  .hide-below-900 {
-    display: none !important;
-  }
+	.hide-below-900 {
+		display: none !important;
+	}
 }

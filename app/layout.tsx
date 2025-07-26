@@ -1,13 +1,11 @@
 import '@/styles/globals.css';
 import { Metadata, Viewport } from 'next';
 import { Link } from '@heroui/link';
-import clsx from 'clsx';
-
-import { Providers } from './providers';
 
 import { siteConfig } from '@/config/site';
 import { fontSans } from '@/config/fonts';
 import Navbar from '@/components/navbar';
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
 	title: {
@@ -37,19 +35,15 @@ export default function RootLayout({
 			suppressHydrationWarning
 			lang='en'>
 			<head />
-			<body
-				className={clsx(
-					' text-foreground bg-[#1A1A1A] font-sans max-w-screen antialiased overflow-x-hidden',
-					fontSans.variable
-				)}>
-				<Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
+			<body>
+				<ThemeProvider attribute='class'>
 					<div className='relative flex flex-col '>
 						<main className='container flex-grow'>
 							{/* <Navbar /> */}
 							{children}
 						</main>
 					</div>
-				</Providers>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

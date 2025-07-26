@@ -18,7 +18,7 @@ export default function App() {
 		<div className='flex items-top justify-between w-screen overscroll-y-auto  bg-[#1A1A1A] h-auto'>
 			<div className='mainpage w-full flex justify-evenly '>
 				<Sidenav />
-				<div className='sideContent w-full flex-1 md:ml-[360px] sidenav-scrollbar bg-[#1A1A1A] h-full '>
+				<div className='sideContent w-full flex-1 md:ml-[360px] sidenav-scrollbar bg-white dark:bg-[#1A1A1A] h-full '>
 					{' '}
 					<div className='fixed md:w-[calc(100%-360px)] w-full h-[100px] z-50 '>
 						<Navbar />
@@ -26,13 +26,15 @@ export default function App() {
 					<div className='mainbody  p-4  h-full '>
 						<section className='title flex items-center justify-between mb-4 px-4 mt-[100px]'>
 							<div className='left'>
-								<h3 className='text-2xl font-bold'>Overview</h3>
-								<p className='text-lg'>
+								<h3 className='text-2xl font-bold text-[var(--header-light-color)] dark:text-[var(--primary-color)]'>
+									Overview
+								</h3>
+								<p className='text-lg text-[#383838] dark:text-[var(--text-color)]'>
 									Stay updated on the general information about our rides
 								</p>
 							</div>
 							<div className='right'>
-								<h4 className='flex items-center gap-2 text-lg font-medium text-[#51CEDF] cursor-pointer hover:text-[#333333] transition-all duration-150 ease-in-out'>
+								<h4 className='flex items-center gap-2 text-lg font-medium text-[var(--header-light-color)] dark:text-[var(--primary-color)] cursor-pointer hover:text-[#333333] transition-all duration-150 ease-in-out'>
 									Download Report <FaCloudDownloadAlt size={24} />
 								</h4>
 							</div>
