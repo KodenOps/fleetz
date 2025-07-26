@@ -11,7 +11,7 @@ const Navbar = () => {
 		setMounted(true);
 	}, []);
 	return (
-		<div className='flex justify-between items-center py-4 bg-[#fbfbfb] dark:bg-[#1F1F1F] text-white dark:text-white shadow-md h-full px-8 w-full'>
+		<div className='flex justify-between items-center py-4 bg-[#fbfbfb] dark:bg-[#1F1F1F] text-white dark:text-white shadow-md h-full px-4 w-full '>
 			<div className='mobileMenu px-2 md:hidden flex items-center justify-between w-full'>
 				{theme === 'dark' ? (
 					<img

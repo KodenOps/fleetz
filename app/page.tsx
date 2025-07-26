@@ -20,11 +20,11 @@ export default function App() {
 				<Sidenav />
 				<div className='sideContent w-full flex-1 md:ml-[360px] sidenav-scrollbar bg-white dark:bg-[#1A1A1A] h-full '>
 					{' '}
-					<div className='fixed md:w-[calc(100%-360px)] w-full h-[100px] z-50 '>
+					<div className='fixed md:w-[calc(100%-360px)] w-full h-[80px] z-50 '>
 						<Navbar />
 					</div>
 					<div className='mainbody  p-4  h-full '>
-						<section className='title flex md:flex-row flex-col md:items-center justify-between mb-4 px-4 mt-[100px]'>
+						<section className='title flex md:flex-row flex-col md:items-center justify-between mb-4 px-4 md:mt-[100px] mt-[80px]'>
 							<div className='left'>
 								<h3 className='text-2xl font-bold text-[var(--header-light-color)] dark:text-[var(--primary-color)]'>
 									Overview
