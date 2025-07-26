@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@config "../tailwind.config.js";
+
+/* Custom scrollbar for sidenav with auto-hide (width trick) */
+.sidenav-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: #51cedf #262626;
+	scrollbar-gutter: stable both-edges;
+}
+.sidenav-scrollbar::-webkit-scrollbar {
+	width: 0px;
+	background: #262626;
+}
+.sidenav-scrollbar:hover::-webkit-scrollbar {
+	width: 8px;
+}
+.sidenav-scrollbar::-webkit-scrollbar-thumb {
+	background: #51cedf;
+	border-radius: 8px;
+}
+.sidenav-scrollbar::-webkit-scrollbar-track {
+	background: #262626;
+	border-radius: 8px;
+}
+
+/* Hide element below 900px */
+.hide-below-900 {
+  display: block;
+}
+@media (max-width: 899px) {
+  .hide-below-900 {
+    display: none !important;
+  }
+}
