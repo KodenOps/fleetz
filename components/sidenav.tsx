@@ -83,6 +83,7 @@ const Sidenav = () => {
 						width={360}
 						height={160}
 						className='w-full'
+						priority
 					/>
 				</div>
 			</div>
