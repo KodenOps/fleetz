@@ -52,7 +52,7 @@ export default function App() {
 								<PercentageBox />
 								<DriverOfTheMonth />
 							</div>
-							<div className='right flex-1'>
+							<div className='right flex-1 h-full'>
 								<BusTracker />
 							</div>
 						</section>

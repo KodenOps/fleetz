@@ -2,9 +2,10 @@
 
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import { FaBus, FaIdBadge, FaUser } from 'react-icons/fa';
-
+import DriverImg from '@/public/assets/driver1.png';
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN!;
 
 const BusTracker = () => {
@@ -15,6 +16,25 @@ const BusTracker = () => {
 	const [coordinates, setCoordinates] = useState<[number, number][]>([
 		[3.4021, 6.5244],
 	]);
+
+	const getTheme = () =>
+		typeof window !== 'undefined' &&
+		document.documentElement.classList.contains('dark')
+			? 'dark'
+			: 'light';
+	const [theme, setTheme] = useState<'light' | 'dark'>(getTheme());
+	useEffect(() => {
+		const observer = new MutationObserver(() => {
+			setTheme(getTheme());
+		});
+
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ['class'],
+		});
+
+		return () => observer.disconnect();
+	}, []);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -33,9 +53,15 @@ const BusTracker = () => {
 	useEffect(() => {
 		if (!mapContainerRef.current) return;
 
+		const theme = getTheme();
+		const mapStyle =
+			theme === 'dark'
+				? 'mapbox://styles/mapbox/dark-v11'
+				: 'mapbox://styles/mapbox/light-v11';
+
 		const map = new mapboxgl.Map({
 			container: mapContainerRef.current,
-			style: 'mapbox://styles/mapbox/dark-v11',
+			style: mapStyle,
 			center: coordinates[0],
 			zoom: 15,
 			attributionControl: false,
@@ -46,7 +72,7 @@ const BusTracker = () => {
 		const el = document.createElement('div');
 		el.className =
 			'w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center';
-		el.innerHTML = '🚌';
+		el.innerHTML = '🚐';
 
 		const marker = new mapboxgl.Marker(el).setLngLat(coordinates[0]).addTo(map);
 		markerRef.current = marker;
@@ -75,13 +101,13 @@ const BusTracker = () => {
 				paint: {
 					'line-color': '#00FFFF',
 					'line-width': 4,
-					'line-dasharray': [2, 2],
+					'line-dasharray': [0, 0],
 				},
 			});
 		});
 
 		return () => map.remove();
-	}, []);
+	}, [theme]);
 
 	useEffect(() => {
 		if (!mapRef.current || !markerRef.current) return;
@@ -106,65 +132,75 @@ const BusTracker = () => {
 	}, [coordinates]);
 
 	return (
-		<div className='w-full h-screen bg-[#0d0d0d] text-white flex flex-col rounded-lg overflow-hidden font-sans'>
+		<div className='w-full h-screen bg-white dark:bg-[#0d0d0d] text-black dark:text-white flex flex-col rounded-lg overflow-hidden font-sans'>
 			{/* Header */}
-			<div className='flex justify-between items-center px-6 py-4 border-b border-gray-800 bg-[#101010]'>
-				<h2 className='text-cyan-400 text-xl font-bold'>Bus Movement</h2>
-				<div className='flex items-center gap-2 text-white'>
-					<span className='bg-[#1f1f1f] p-2 rounded-full'>
-						<FaBus className='text-cyan-400' />
+			<div className='flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white shadow-sm dark:bg-[#101010]'>
+				<h2 className='text-xl text-[var(--header-light-color)] dark:text-[var(--primary-color)]  font-bold'>
+					Bus Movement
+				</h2>
+				<div className='flex items-center gap-2'>
+					<span className='bg-gray-200 dark:bg-[#1f1f1f] p-2 rounded-full'>
+						<FaBus className='text-[var(--header-light-color)] dark:text-[var(--primary-color)]' />
 					</span>
 					<span>Bus 021 ▾</span>
 				</div>
 			</div>
 
 			{/* Map */}
-			<div className='relative w-full h-full bg-red-400 min-h-[400px]'>
+			<div className='relative w-full h-full min-h-[400px]'>
 				<div
 					ref={mapContainerRef}
-					className='absolute object-cover w-full h-full '
+					className='absolute object-cover w-full h-full'
 				/>
 			</div>
 
 			{/* Info Panel */}
-			<div className='bg-[#1a1a1a] p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-t border-gray-800'>
+			<div className='bg-gray-100 dark:bg-[#1a1a1a] p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-t border-gray-200 dark:border-gray-800'>
 				{/* Driver Info */}
 				<div>
-					<h3 className='text-white font-semibold text-lg'>Driver</h3>
-					<p className='text-sm mt-1 flex items-center gap-2'>
-						<FaUser className='text-gray-400' />
-						Chike Moghalu
-					</p>
-					<p className='text-sm mt-1 flex items-center gap-2'>
-						<FaIdBadge className='text-gray-400' />
+					<div className='driverInfo flex items-center justify-start gap-2'>
+						<Image
+							src={DriverImg}
+							alt='driver png'
+							className='w-[50px] object-cover rounded-full border-2 border-[#c4c4c4] h-[50px]'
+						/>
+						<div>
+							<h3 className='font-semibold text-lg'>Driver</h3>
+							<p className='text-sm mt-1 flex items-center gap-2'>
+								Chike Moghalu
+							</p>
+						</div>
+					</div>
+					<p className='text-sm mt-2 flex items-center gap-2'>
+						<FaIdBadge className='text-gray-600 dark:text-gray-400' />
 						KJA-231-FL
 					</p>
-					<p className='text-sm mt-1 flex items-center gap-2'>
+					<p className='text-sm mt-2 flex items-center gap-2'>
 						👥 32 seater Coaster Bus
 					</p>
+					<div>
+						<button className='mt-4 bg-cyan-600 hover:bg-cyan-500 text-white dark:text-black dark:bg-cyan-400 font-semibold cursor-pointer px-4 py-2 rounded-md'>
+							Contact Driver
+						</button>
+					</div>
 				</div>
 
 				{/* Status + Stops */}
-				<div className='flex flex-col items-start gap-2'>
-					<span className='text-green-400 border border-green-400 px-3 py-1 rounded-full text-sm font-medium'>
+				<div className='flex flex-col justify-end items-end gap-2'>
+					<span className='text-green-600 dark:text-green-400 border border-green-600 dark:border-green-400 px-3 py-1 rounded-full text-sm font-medium'>
 						En-route
 					</span>
-					<div>
-						<h4 className='text-cyan-400 text-sm font-semibold mb-1'>
+					<div className='flex flex-col items-end'>
+						<h4 className='text-cyan-600 dark:text-cyan-400 text-right text-sm font-semibold mb-1'>
 							Bus Stops
 						</h4>
-						<p className='text-sm text-gray-300'>
+						<p className='text-sm text-gray-700 dark:text-gray-300 w-[80%] text-right'>
 							Idejo | Oworo | Charley Boy | Charity | Sango
 						</p>
 					</div>
 				</div>
 
 				{/* Contact Button */}
-				<div>
-					<button className='bg-cyan-400 hover:bg-cyan-300 text-black font-bold px-4 py-2 rounded-md'>
-						Contact Driver
-					</button>
-				</div>
 			</div>
 		</div>
 	);
