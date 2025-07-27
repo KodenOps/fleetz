@@ -12,6 +12,7 @@ import Revenuechart from '@/components/Revenuechart';
 import FleetMetrics from '@/components/FleetMetrics';
 import PercentageBox from '@/components/PercentageBox';
 import DriverOfTheMonth from '@/components/DriverOfTheMonth';
+import BusTracker from '@/components/MapBus';
 
 export default function App() {
 	return (
@@ -51,7 +52,9 @@ export default function App() {
 								<PercentageBox />
 								<DriverOfTheMonth />
 							</div>
-							<div className='right flex-1'>hello</div>
+							<div className='right flex-1'>
+								<BusTracker />
+							</div>
 						</section>
 					</div>
 				</div>
