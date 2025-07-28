@@ -38,10 +38,7 @@ export default function RootLayout({
 			<body>
 				<ThemeProvider attribute='class'>
 					<div className='relative flex flex-col '>
-						<main className='container flex-grow'>
-							{/* <Navbar /> */}
-							{children}
-						</main>
+						<main className='container flex-grow'>{children}</main>
 					</div>
 				</ThemeProvider>
 			</body>
