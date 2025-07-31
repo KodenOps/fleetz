@@ -162,11 +162,11 @@ const BusTracker = () => {
 						<Image
 							src={DriverImg}
 							alt='driver png'
-							className='w-[50px] object-cover rounded-full border-2 border-[#c4c4c4] h-[50px]'
+							className='md:w-[50px] w-[38px] object-cover rounded-full border-2 border-[#c4c4c4] md:h-[50px] h-[38px]'
 						/>
 						<div>
-							<h3 className='font-semibold text-lg'>Driver</h3>
-							<p className='text-sm mt-1 flex items-center gap-2'>
+							<h3 className='font-semibold text-lg w-full'>Driver</h3>
+							<p className='text-sm mt-1  flex items-center gap-2'>
 								Chike Moghalu
 							</p>
 						</div>
@@ -179,7 +179,7 @@ const BusTracker = () => {
 						👥 32 seater Coaster Bus
 					</p>
 					<div>
-						<button className='mt-4 bg-cyan-600 hover:bg-cyan-500 text-white dark:text-black dark:bg-cyan-400 font-semibold cursor-pointer px-4 py-2 rounded-md'>
+						<button className='mt-4 bg-cyan-600 hover:bg-cyan-500 text-white dark:text-black dark:bg-cyan-400 font-semibold cursor-pointer px-4 py-2 rounded-md md:text-md text-sm transition-all duration-150 ease-in-out'>
 							Contact Driver
 						</button>
 					</div>
