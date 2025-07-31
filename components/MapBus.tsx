@@ -165,17 +165,19 @@ const BusTracker = () => {
 							className='md:w-[50px] w-[38px] object-cover rounded-full border-2 border-[#c4c4c4] md:h-[50px] h-[38px]'
 						/>
 						<div>
-							<h3 className='font-semibold text-lg w-full'>Driver</h3>
-							<p className='text-sm mt-1  flex items-center gap-2'>
+							<h3 className='font-semibold md:text-lg text-md w-full'>
+								Driver
+							</h3>
+							<p className='md:text-sm text-[12px]  mt-1  flex items-center gap-2'>
 								Chike Moghalu
 							</p>
 						</div>
 					</div>
-					<p className='text-sm mt-2 flex items-center gap-2'>
+					<p className='md:text-sm text-[12px]  mt-2 flex items-center gap-2'>
 						<FaIdBadge className='text-gray-600 dark:text-gray-400' />
 						KJA-231-FL
 					</p>
-					<p className='text-sm mt-2 flex items-center gap-2'>
+					<p className='md:text-sm text-[12px] mt-2 flex items-center gap-2'>
 						👥 32 seater Coaster Bus
 					</p>
 					<div>
@@ -187,14 +189,14 @@ const BusTracker = () => {
 
 				{/* Status + Stops */}
 				<div className='flex flex-col justify-end w-full items-end gap-2'>
-					<span className='text-green-600 dark:text-green-400 border border-green-600 dark:border-green-400 px-3 py-1 rounded-full text-sm font-medium'>
+					<span className='text-green-600 dark:text-green-400 border border-green-600 dark:border-green-400 px-3 py-1 rounded-full md:text-sm text-[12px] font-medium'>
 						En-route
 					</span>
 					<div className='flex flex-col items-end'>
 						<h4 className='text-cyan-600 dark:text-cyan-400 text-right text-sm font-semibold mb-1'>
 							Bus Stops
 						</h4>
-						<p className='text-sm text-gray-700 dark:text-gray-300 w-[80%] text-right'>
+						<p className='md:text-sm text-[12px] text-gray-700 dark:text-gray-300 w-[80%] text-right'>
 							Idejo | Oworo | Charley Boy | Charity | Sango
 						</p>
 					</div>
