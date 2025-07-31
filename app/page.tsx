@@ -26,7 +26,7 @@ export default function App() {
 				<div className='fixed right-0 md:w-[80%] w-full h-[80px] z-50 top-0'>
 					<Navbar />
 				</div>
-				<div className='mainbody mt-[80px] bg-slate-50 dark:bg-[#1a1a1a] p-4 sidenav-scrollbar h-full '>
+				<div className='mainbody mt-[80px] bg-slate-50 dark:bg-[#1a1a1a] md:px-4 px-2 py-4 sidenav-scrollbar h-full '>
 					<section className='title flex md:flex-row flex-col w-full md:items-center justify-between mb-4 px-4 md:mt-[10px] mt-[0px]'>
 						<div className='left'>
 							<h3 className='text-2xl font-bold text-[var(--header-light-color)] dark:text-[var(--primary-color)]'>
