@@ -71,7 +71,7 @@ const Revenuechart = () => {
 		},
 	];
 	return (
-		<div className='revenuechart md:flex-1 dark:bg-[#1F1F1F] bg-[#fff] shadow-sm md:my-0 my-2 rounded-sm'>
+		<div className='revenuechart md:flex-1 dark:bg-[#1F1F1F] bg-[#fff] w-full h-full shadow-sm md:my-0 my-2 rounded-sm'>
 			<div className='title flex w-full justify-between items-center p-6'>
 				<h3 className='text-xl text-[var(--header-light-color)] dark:text-[var(--primary-color)]  font-bold'>
 					Weekly Revenue Flow
@@ -85,7 +85,7 @@ const Revenuechart = () => {
 					<option value='2023'>2023</option>
 				</select>
 			</div>
-			<div className='pb-6 px-2  rounded-sm w-full h-[280px]'>
+			<div className='pb-6 px-2  rounded-sm min-w-full h-[280px]'>
 				<ResponsiveContainer
 					width='100%'
 					height='100%'>

@@ -42,7 +42,9 @@ const BusTracker = () => {
 				const last = prevCoords[prevCoords.length - 1];
 				const newCoord: [number, number] = [
 					last[0] + (Math.random() - 0.5) * 0.001,
-					last[1] + (Math.random() - 0.5) * 0.001,
+					last[1] + 0.001,
+					// last[0] + (Math.random() - 0.5) * 0.001,
+					// last[1] + (Math.random() - 0.5) * 0.001,
 				];
 				return [...prevCoords, newCoord];
 			});
@@ -101,7 +103,7 @@ const BusTracker = () => {
 				paint: {
 					'line-color': '#00FFFF',
 					'line-width': 4,
-					'line-dasharray': [0, 0],
+					'line-dasharray': [2, 2],
 				},
 			});
 		});
@@ -132,13 +134,13 @@ const BusTracker = () => {
 	}, [coordinates]);
 
 	return (
-		<div className='w-full h-screen bg-white dark:bg-[#0d0d0d] text-black dark:text-white flex flex-col rounded-lg overflow-hidden font-sans'>
+		<div className='w-full h-full bg-white dark:bg-[#0d0d0d] text-black dark:text-white flex flex-col rounded-lg overflow-hidden font-sans '>
 			{/* Header */}
-			<div className='flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white shadow-sm dark:bg-[#101010]'>
+			<div className=' flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white shadow-sm dark:bg-[#101010]'>
 				<h2 className='text-xl text-[var(--header-light-color)] dark:text-[var(--primary-color)]  font-bold'>
 					Bus Movement
 				</h2>
-				<div className='flex items-center gap-2'>
+				<div className='flex items-center gap-2 '>
 					<span className='bg-gray-200 dark:bg-[#1f1f1f] p-2 rounded-full'>
 						<FaBus className='text-[var(--header-light-color)] dark:text-[var(--primary-color)]' />
 					</span>
@@ -147,17 +149,15 @@ const BusTracker = () => {
 			</div>
 
 			{/* Map */}
-			<div className='relative w-full h-full min-h-[400px]'>
-				<div
-					ref={mapContainerRef}
-					className='absolute object-cover w-full h-full'
-				/>
-			</div>
+			<div
+				ref={mapContainerRef}
+				className='w-full h-[500px] '
+			/>
 
 			{/* Info Panel */}
-			<div className='bg-gray-100 dark:bg-[#1a1a1a] p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-t border-gray-200 dark:border-gray-800'>
+			<div className='bg-gray-100 dark:bg-[#000000] p-6 flex justify-between items-start md:items-center gap-4 border-t border-gray-200 dark:border-gray-800'>
 				{/* Driver Info */}
-				<div>
+				<div className='w-full'>
 					<div className='driverInfo flex items-center justify-start gap-2'>
 						<Image
 							src={DriverImg}
@@ -186,7 +186,7 @@ const BusTracker = () => {
 				</div>
 
 				{/* Status + Stops */}
-				<div className='flex flex-col justify-end items-end gap-2'>
+				<div className='flex flex-col justify-end w-full items-end gap-2'>
 					<span className='text-green-600 dark:text-green-400 border border-green-600 dark:border-green-400 px-3 py-1 rounded-full text-sm font-medium'>
 						En-route
 					</span>

@@ -12,7 +12,9 @@
 	--subtext-light: #494949;
 	--subtext-dark: #a0a0a0;
 }
-
+body {
+	overflow-x: hidden;
+}
 /* Custom scrollbar for sidenav with auto-hide (width trick) */
 .sidenav-scrollbar {
 	scrollbar-width: thin;

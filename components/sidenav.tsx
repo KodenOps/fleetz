@@ -46,7 +46,7 @@ const Sidenav = () => {
 	}, []);
 
 	return (
-		<div className='left w-[360px] hidden md:block fixed left-0 dark:bg-[#1F1F1F] bg-white h-screen py-8 px-4'>
+		<div className='w-full hidden md:block left-0 dark:bg-[#1F1F1F] bg-white h-screen py-8 px-4'>
 			<div className='logo'>
 				{mounted ? (
 					<Image
