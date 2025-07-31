@@ -5,6 +5,7 @@ interface DriverOfTheMonthProps {
 	name: string;
 	rank: string;
 	points: number;
+	bordercolor: string;
 	imageUrl: string;
 }
 const DriverOfTheMonth = () => {
@@ -13,18 +14,21 @@ const DriverOfTheMonth = () => {
 			name: 'Amah, Dan',
 			rank: '1st',
 			points: 199,
+			bordercolor: '#5CFF41',
 			imageUrl: '@/../assets/driver1.png',
 		},
 		{
 			name: 'Sunny Ojo',
 			rank: '2nd',
 			points: 182,
+			bordercolor: '#FFB341',
 			imageUrl: '@/../assets/driver2.png',
 		},
 		{
 			name: 'Mary Jane',
 			rank: '3rd',
 			points: 165,
+			bordercolor: '#FF6341',
 			imageUrl: '@/../assets/driver3.png',
 		},
 	];
@@ -39,8 +43,10 @@ const DriverOfTheMonth = () => {
 						<div
 							key={index}
 							className='TopDriver flex mb-2  items-center h-[120px] gap-4  bg-[#323232] p-4 rounded-lg  relative'>
-							<span className='absolute md:top-2 top-6 md:right-2 right-6 text-[#fff] text-[12px]  gap-2 px-2 py-[2px] font-medium flex items-center justify-center rounded-full border-2 border-[#5CFF41]'>
-								{driver.points} <FaGem color='#5CFF41' />
+							<span
+								style={{ borderColor: driver.bordercolor }}
+								className='absolute md:top-2 top-6 md:right-2 right-6 text-[#fff] text-[12px] gap-2 px-2 py-[2px] font-medium flex items-center justify-center rounded-full border-2'>
+								{driver.points} <FaGem color={driver.bordercolor} />
 							</span>
 							<img
 								src={driver.imageUrl}
